@@ -158,7 +158,7 @@ function [Vout, CAR, stats] = CARLA(tt, V, srate, sens, nboot)
         nMin = ceil(0.1*nChs); % minimum number of channels to start at, for stability. Hardcoded at 10 %
         zMMxTrs = mean(stats.zMinMean(1, :, :), 3); % mean ZMinMean across bootstrapped samples for each n
         
-        ii = nMin;
+        ii = max(nMin, 2); % if there are 10 or fewer channels, require ii to start at 2 (minimum CAR size)
         while ii <= nChs
             
             if ii == nChs % at the end. no more comparisons needed

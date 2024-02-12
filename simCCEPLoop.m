@@ -151,6 +151,7 @@ for nresp = 0:1:50
         close all;
 
         % Accuracy values. positive means responsive/excluded from CAR
+        % We keep these variables as named here, but note that FN and FP are now renamed RCM and NCM in the manuscript.
         TP = sum(find(respBool) > nCAR); % responsive channels successfully excluded from CAR (above the cutoff)
         TN = sum(find(~respBool) <= nCAR); % NR channels successfully below or at cutoff
         FN = sum(find(respBool) <= nCAR); % responsive channels incorrectly included in CAR. *This matters most

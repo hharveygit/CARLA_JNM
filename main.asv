@@ -86,7 +86,7 @@ fig3_EPConstruct
 
 %% Figure 4: Simulate 50 channels with responsiveness varying from 0 to 50, with 30 repetitions each, and apply CARLA
 
-% First, run this to generate outputs for each number of responsive channels
+% First run this to generate outputs for each number of responsive channels
 % outputs saved to .\output\simLoop
 Aglobal = 0; % no global signal desired (0 amplitude)
 simCCEPLoop;
@@ -94,36 +94,6 @@ simCCEPLoop;
 % Then, keeping Aglobal in the workspace, run this to make summary figures (4C, D), as well as identify median candidates for 4A, B
 % .\output\simLoop will be renamed .\output\simLoopNoGlob, where outputs are saved.
 summarizeSimCCEPLoop
-
-%% Figure S1: Simulate datasets like Fig 4, but with fewer total channels (25, 20, 15, 10) and calculate CARLA accuracy
-
-% First, run this to generate outputs for each total channel size and fraction of responsive channels
-% outputs are saved to .\output\simLoopNChs
-figS1a_simCCEPTotalChs
-
-% Then run this to make summary figure (S1A). S1B was constructed with examples most similar to the median of this summary output
-figS1b_summarizeSimCCEPTotalChs
-
-%% Figure S2: Simulate datasets with lower signal-to-noise ratio (SNR) and calculate CARLA accuracy
-
-% Brown noise coefficients to save outputs for. Split up into chunks for more efficient parallelization
-% SNR is varied by changing the Brown Noise coefficient. The population mean SNR is estimated at the end with figS2b_summarizeSimCCEPSNRs, below.
-brownCoefRanges = [0.4, 0.5;
-                   0.6, 0.7;
-                   0.8, 0.9;
-                   1.0, 1.0];
-
-% First, run this to generate outputs for each SNR level and number of responsive channels. This also saves the plots for Figure S2A
-% outputs are saved to .\output\simLoopSNR
-% this loop can be parallelized if desired
-for ii = 1:4
-    brownCoefRange = brownCoefRanges(ii, :);
-    figS2a_simCCEPSNRs
-end
-
-% Then run this to make summary figure, S2B.
-% This also calculates the geomean (sigma) SNR for each Brown Noise coefficient condition (variable snrGeomean in workspace)
-figS2b_summarizeSimCCEPSNRs
 
 %% Figure 5: Apply CARLA to real data (sub 1, stim site 1)
 
@@ -137,6 +107,14 @@ chs2Plot = [100, 203];
 
 % outputs saved to .\output\realCCEPs\. These correspond to figures 5B-F. To generate 5A (stim site overlaid on T1 MRI), see section i), above.
 applyCARLARealCCEPs
+
+%% Figure S1: Simulate datasets with fewer total channels (25, 20, 15, 10) and calculate CARLA accuracy
+
+figS1_simCCEPTotalChs
+
+%% Figure S2: Simulate datasets with lower signal-to-noise ratio (SNR) and calculate CARLA accuracy
+
+brownCoefRange
 
 %% Figure S3: Average channel responses for sub 1, stim site 1 after applying CAR vs. CARLA
 

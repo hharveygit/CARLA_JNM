@@ -1,7 +1,7 @@
 If this code is used in a publication, please cite the manuscript:
 "CARLA: Adjusted common average referencing for cortico-cortical evoked potential data"
 by H Huang, G Ojeda Valencia, NM Gregg, GM Osman, MN Montoya, GA Worrell, KJ Miller, and D Hermes.
-A preprint is available currently at doi: ___
+A preprint is available currently at https://doi.org/10.48550/arXiv.2310.00185.
 
 Correspondence:
 H Huang: huang.harvey@mayo.edu; D Hermes: hermes.dora@mayo.edu
