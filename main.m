@@ -199,7 +199,8 @@ applyCARLARealCCEPs
 % First run this script. Outputs are saved to .\output\realCCEPsLoop\.
 applyCARLARealCCEPsLoop
 
-% Then run this script to generate outputs for Figure 7
+% Then run this script to generate outputs for Figure 7.
+% Note that this step uses Freesurfer outputs (in data/derivatives/freesurfer/.) to localize each stim site to a tissue type
 fig7_summarizeCARLARealCCEPs
 
 %% Figure 8: Calculate cross-channel R-squared values for no CAR vs different types of fixed CARs vs CARLA
