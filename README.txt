@@ -16,7 +16,6 @@ DEPENDENCIES
 - SPM12 (as dependency for mnl_seegview): https://www.fil.ion.ucl.ac.uk/spm/software/spm12/
 - vistasoft: https://github.com/vistalab/vistasoft
 - Freesurfer v7: https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
-- GIfTI: https://github.com/gllmflndn/gifti
 
 *****
 

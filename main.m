@@ -44,10 +44,9 @@ dataPath = 'data';
 addpath(genpath('path/to/mnl_ieegBasics'));
 addpath(genpath('path/to/matmef'));
 addpath('path/to/mnl_seegview');
-addpath(genpath('path/to/vistasoft'));
 addpath('path/to/spm12'); addpath(fullfile('path/to/spm12', 'config'));
-addpath(genpath('path/to/freesurfer/7.1.1/matlab'));
-addpath(genpath('path/to/gifti'));
+addpath(genpath('path/to/vistasoft/fileFilters/nifti')); % we only need the niftiRead function in this subfolder. This can be omitted if not generating Fig 7.
+addpath(genpath('path/to/freesurfer/7.1.1/matlab')); % This can be omitted if not generating Fig 7.
 
 % To save figures as vectorized objects
 set(0, 'DefaultFigureRenderer', 'painters');
