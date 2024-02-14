@@ -194,6 +194,9 @@ applyCARLARealCCEPs
 
 %% Figure 7: Loop through stimulation sites in each subject and compute optimal CARLA cutoff
 % This also calculates the cross-channel R-squared values for all possible adjusted common average sizes, to be summarized in Figure 8
+%%% NOTE: The data released with publication do not include all stimulation sites (time points are censored by setting to 0).
+%%% Therefore, the results and figures in this section cannot yet be generated. This complete data are currently being used to answer other scientific questions,
+%%% and will be released with other manuscripts in time. We greatly appreciate your patience and understanding.
 
 % First run this script. Outputs are saved to .\output\realCCEPsLoop\.
 applyCARLARealCCEPsLoop
@@ -203,6 +206,9 @@ applyCARLARealCCEPsLoop
 fig7_summarizeCARLARealCCEPs
 
 %% Figure 8: Calculate cross-channel R-squared values for no CAR vs different types of fixed CARs vs CARLA
+%%% NOTE: The data released with publication do not include all stimulation sites (time points are censored by setting to 0).
+%%% Therefore, the results and figures in this section cannot yet be generated. This complete data are currently being used to answer other scientific questions,
+%%% and will be released with other manuscripts in time. We greatly appreciate your patience and understanding.
 
 % outputs saved to .\output\realCCEPsLoop\.
 fig8_summarizeInterChCorr
