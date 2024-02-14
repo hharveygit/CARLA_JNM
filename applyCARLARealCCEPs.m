@@ -30,10 +30,11 @@
 elecsPath = fullfile(dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_electrodes.tsv', sub));
 elecs = ieeg_readtableRmHyphens(elecsPath);
 
-mefPath = fullfile(dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_task-ccep_run-%02d_ieeg.mefd', sub, run));
+% known issue: Matlab crashing when readMef3 loads mef data from relative path. Temporary fix = fullfile with pwd. If you specified an absolute "dataPath", remove "pwd".
+mefPath = fullfile(pwd, dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_task-ccep_run-%02d_ieeg.mefd', sub, run));
 channelsPath = fullfile(dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_task-ccep_run-%02d_channels.tsv', sub, run));
 eventsPath = fullfile(dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_task-ccep_run-%02d_events.tsv', sub, run));
-annotPath = fullfile(dataPath, sub, 'ses-ieeg01', 'ieeg', sprintf('%s_ses-ieeg01_task-ccep_run-%02d_eventsAnnot.tsv', sub, run));
+annotPath = fullfile(dataPath, 'derivatives', 'event_annotations', sub, sprintf('%s_ses-ieeg01_task-ccep_run-%02d_eventsAnnot.tsv', sub, run));
 
 % Load CCEP data
 mef = ccep_PreprocessMef(mefPath, channelsPath, eventsPath);
@@ -41,7 +42,7 @@ mef.loadMefAll;
 mef.highpass;
 mef.loadMefTrials([-1, 1]);
 
-mef.plotOutputs(1, [], 200);
+%mef.plotOutputs(1, [], 200);
 
 tt = mef.tt;
 srate = mef.srate;
@@ -54,7 +55,8 @@ sites = groupby(events.electrical_stimulation_site);
 outdir = fullfile('output', 'realCCEPs');
 mkdir(outdir);
 
-try
+clear annots
+try % subject 4 has no annots because no interictal activity, hence the try
     annots = readtable(annotPath, 'FileType', 'text', 'Delimiter', '\t');
     annots = annots.status_description;
     assert(length(annots) == height(events), 'Error: length of event annotations does not match events table height');
@@ -67,7 +69,7 @@ SOZ = elecs.name(contains(elecs.seizure_zone, 'SOZ'));
 disp('SOZs:');
 disp(SOZ');
 
-clear *Path*
+clear elecsPath mefPath channelsPath eventsPath annotPath % cleaning
 
 %% Extract data from site of interest, NaN out individual bad trials
 
@@ -82,8 +84,10 @@ dataSite = data(goodChs, :, idxesSite);
 chsSite = channels.name(goodChs);
 
 % remove bad trials and set channels to nan in individual trials, according to annotations
-annotsSite = annots(idxesSite); % get annotations corresponding to this stim site
-dataSite = rmBadTrialsAnnots(dataSite, chsSite, annotsSite);
+if exist('annots', 'var')
+    annotsSite = annots(idxesSite); % get annotations corresponding to this stim site
+    dataSite = rmBadTrialsAnnots(dataSite, chsSite, annotsSite);
+end
 
 figure('Position', [200, 200, 1200, 1200]);
 subplot(1, 2, 1); % first half of channels

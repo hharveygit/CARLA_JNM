@@ -37,7 +37,7 @@
 % Make sure you are currently working in the root manuscript directory (CARLA)
 addpath('functions');
 
-% Data should be downloaded from OpenNeuro and copied to a folder here (./data)
+% Data should be downloaded from OpenNeuro and copied to a folder here in the root directory (./data)
 dataPath = 'data';
 
 % Add paths to other dependencies. Change the dummy paths listed here to where they are located on your system.
@@ -140,7 +140,7 @@ applyCARLARealCCEPs
 %% Figure S3: Average channel responses for sub 1, stim site 1 after applying CAR vs. CARLA
 
 % This supplemental figure is a direct addendum to Figure 5, showing the mean signal for the first 50 channels after rereferencing by CARLA or CAR
-% Run after the previous section, keeping all workspace variables
+% Run after the previous section, keeping all workspace variables. Output also saved to .\output\realCCEPs\.
 figS3_compareCARvCARLA
 
 %% Figure S4: Apply CARLA to real data at another 4 stim sites in subjects 1-4
