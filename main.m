@@ -63,11 +63,6 @@ electrodes = fullfile(dataPath, 'sub-1', 'ses-ieeg01', 'ieeg', 'sub-1_ses-ieeg01
 % Run sliceGUI, and manually interact with it
 sliceGUI(niiPath, electrodes);
 
-%% Table 1: Calculate the number of measurement electrodes (channels) used in each subject
-
-% outputs are directly printed to command window
-tab1_dispNumElectrodes
-
 %% Figure 1: Save simulated CCEP channels and their theoretical components
 
 % outputs saved to .\output\simComponents
