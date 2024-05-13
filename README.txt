@@ -1,7 +1,8 @@
 If this code is used in a publication, please cite the manuscript:
-"CARLA: Adjusted common average referencing for cortico-cortical evoked potential data"
-by H Huang, G Ojeda Valencia, NM Gregg, GM Osman, MN Montoya, GA Worrell, KJ Miller, and D Hermes.
-A preprint is available currently at https://doi.org/10.48550/arXiv.2310.00185.
+Huang, H., Ojeda Valencia, G., Gregg, N. M., Osman, G. M., Montoya, M. N., Worrell, G. A., Miller, K. J., & Hermes, D. (2024). CARLA: Adjusted common average referencing for cortico-cortical evoked potential data. Journal of Neuroscience Methods, 110153.
+DOI: https://doi.org/10.1016/j.jneumeth.2024.110153.
+
+The associated data is publicly available on OpenNeuro in Brain Imaging Data Structure (BIDS) format: https://openneuro.org/datasets/ds004977/versions/1.2.0
 
 Correspondence:
 H Huang: huang.harvey@mayo.edu; D Hermes: hermes.dora@mayo.edu
@@ -19,9 +20,9 @@ DEPENDENCIES
 
 *****
 
-USAGE
+NOTES AND USAGE
 
-a. The data used in this analysis will be available upon manuscript publication on OpenNeuro, in BIDS format. At time of publication, it will contain the raw data needed to generate all results EXCEPT for those pertaining to figures 7 and 8 (which require data from all stimulation sites in all subjects). The complete data are currently being used to answer other scientific questions, and will be released in time as other projects are completed. We greatly appreciate your patience and understanding. Before manuscript publication, all results pertaining to simulated CCEPs (e.g., Figure 4) can still be reproduced by the code alone.
+a. The dataset on OpenNeuro (link above) contains the raw data needed to generate all results EXCEPT for those pertaining to figures 7 and 8 (which require data from all stimulation sites in all subjects). The complete data are currently being used to answer other scientific questions, and will be released in time as other projects are completed. We greatly appreciate your patience and understanding.
 
 b. Pial, cortical, and subcortical segmentations for each subject were obtained using Freesurfer v7. These were used to localize each stimulation site to a particular tissue type (in fig7_summarizeCARLARealCCEPs.m). The necessary Freesurfer outputs for each subject are located in the data subdirectory: data/derivatives/freesurfer
 
